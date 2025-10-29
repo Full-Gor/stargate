@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clavier Stargate - Interface Chevrons</title>
+    <title>DHD Stargate - Interface Chevrons</title>
     <style>
         * {
             margin: 0;
@@ -96,6 +96,12 @@
             overflow: hidden;
         }
 
+        .key img {
+            width: 40px;
+            height: 40px;
+            filter: invert(1);
+        }
+
         .key:hover {
             background: linear-gradient(145deg, #2a2a5a, #1a1a4a);
             border-color: #4488ff;
@@ -176,6 +182,13 @@
             margin-bottom: 20px;
             position: relative;
             overflow: hidden;
+        }
+
+        .sequence-display img {
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            filter: invert(1);
         }
 
         .sequence-display::before {
@@ -284,7 +297,11 @@
             
             .key {
                 height: 60px;
-                font-size: 1.2rem;
+            }
+            
+            .key img {
+                width: 30px;
+                height: 30px;
             }
             
             .title h1 {
@@ -293,6 +310,11 @@
             
             .sequence-display {
                 font-size: 1.5rem;
+            }
+            
+            .sequence-display img {
+                width: 30px;
+                height: 30px;
             }
         }
 
@@ -303,7 +325,11 @@
             
             .key {
                 height: 50px;
-                font-size: 1rem;
+            }
+            
+            .key img {
+                width: 25px;
+                height: 25px;
             }
             
             .title h1 {
@@ -313,6 +339,11 @@
             .sequence-display {
                 font-size: 1.2rem;
             }
+            
+            .sequence-display img {
+                width: 25px;
+                height: 25px;
+            }
         }
     </style>
 </head>
@@ -321,64 +352,65 @@
     
     <div class="container">
         <div class="title">
-            <h1>CLAVIER STARGATE</h1>
+            <h1>DHD STARGATE</h1>
             <p>Interface de composition avec sons authentiques des chevrons</p>
         </div>
         
         <div class="keyboard-container">
             <div class="keyboard">
-                <!-- Première rangée -->
+                <!-- Première rangée - Symboles 1-10 -->
                 <div class="keyboard-row">
-                    <div class="key" data-key="1">1</div>
-                    <div class="key" data-key="2">2</div>
-                    <div class="key" data-key="3">3</div>
-                    <div class="key" data-key="4">4</div>
-                    <div class="key" data-key="5">5</div>
-                    <div class="key" data-key="6">6</div>
-                    <div class="key" data-key="7">7</div>
-                    <div class="key" data-key="8">8</div>
-                    <div class="key" data-key="9">9</div>
-                    <div class="key" data-key="0">0</div>
+                    <div class="key" data-key="1"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/001.svg"></div>
+                    <div class="key" data-key="2"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/002.svg"></div>
+                    <div class="key" data-key="3"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/003.svg"></div>
+                    <div class="key" data-key="4"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/004.svg"></div>
+                    <div class="key" data-key="5"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/005.svg"></div>
+                    <div class="key" data-key="6"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/006.svg"></div>
+                    <div class="key" data-key="7"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/007.svg"></div>
+                    <div class="key" data-key="8"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/008.svg"></div>
+                    <div class="key" data-key="9"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/009.svg"></div>
+                    <div class="key" data-key="10"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/010.svg"></div>
                 </div>
                 
-                <!-- Deuxième rangée -->
+                <!-- Deuxième rangée - Symboles 11-20 -->
                 <div class="keyboard-row">
-                    <div class="key" data-key="Q">Q</div>
-                    <div class="key" data-key="W">W</div>
-                    <div class="key" data-key="E">E</div>
-                    <div class="key" data-key="R">R</div>
-                    <div class="key" data-key="T">T</div>
-                    <div class="key" data-key="Y">Y</div>
-                    <div class="key" data-key="U">U</div>
-                    <div class="key" data-key="I">I</div>
-                    <div class="key" data-key="O">O</div>
-                    <div class="key" data-key="P">P</div>
+                    <div class="key" data-key="11"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/011.svg"></div>
+                    <div class="key" data-key="12"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/012.svg"></div>
+                    <div class="key" data-key="13"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/013.svg"></div>
+                    <div class="key" data-key="14"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/014.svg"></div>
+                    <div class="key" data-key="15"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/015.svg"></div>
+                    <div class="key" data-key="16"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/016.svg"></div>
+                    <div class="key" data-key="17"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/017.svg"></div>
+                    <div class="key" data-key="18"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/018.svg"></div>
+                    <div class="key" data-key="19"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/019.svg"></div>
+                    <div class="key" data-key="20"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/020.svg"></div>
                 </div>
                 
-                <!-- Troisième rangée -->
+                <!-- Troisième rangée - Symboles 21-30 -->
                 <div class="keyboard-row">
-                    <div class="key" data-key="A">A</div>
-                    <div class="key" data-key="S">S</div>
-                    <div class="key" data-key="D">D</div>
-                    <div class="key" data-key="F">F</div>
-                    <div class="key" data-key="G">G</div>
-                    <div class="key" data-key="H">H</div>
-                    <div class="key" data-key="J">J</div>
-                    <div class="key" data-key="K">K</div>
-                    <div class="key" data-key="L">L</div>
+                    <div class="key" data-key="21"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/021.svg"></div>
+                    <div class="key" data-key="22"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/022.svg"></div>
+                    <div class="key" data-key="23"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/023.svg"></div>
+                    <div class="key" data-key="24"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/024.svg"></div>
+                    <div class="key" data-key="25"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/025.svg"></div>
+                    <div class="key" data-key="26"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/026.svg"></div>
+                    <div class="key" data-key="27"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/027.svg"></div>
+                    <div class="key" data-key="28"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/028.svg"></div>
+                    <div class="key" data-key="29"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/029.svg"></div>
                     <div class="key special" data-key="DEL">DEL</div>
                 </div>
                 
-                <!-- Quatrième rangée -->
+                <!-- Quatrième rangée - Symboles 31-39 + ENTER -->
                 <div class="keyboard-row">
-                    <div class="key" data-key="Z">Z</div>
-                    <div class="key" data-key="X">X</div>
-                    <div class="key" data-key="C">C</div>
-                    <div class="key" data-key="V">V</div>
-                    <div class="key" data-key="B">B</div>
-                    <div class="key" data-key="N">N</div>
-                    <div class="key" data-key="M">M</div>
-                    <div class="key space" data-key="SPACE">ESPACE</div>
+                    <div class="key" data-key="30"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/030.svg"></div>
+                    <div class="key" data-key="31"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/031.svg"></div>
+                    <div class="key" data-key="32"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/032.svg"></div>
+                    <div class="key" data-key="33"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/033.svg"></div>
+                    <div class="key" data-key="34"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/034.svg"></div>
+                    <div class="key" data-key="35"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/035.svg"></div>
+                    <div class="key" data-key="36"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/036.svg"></div>
+                    <div class="key" data-key="37"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/037.svg"></div>
+                    <div class="key" data-key="38"><img src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/038.svg"></div>
                     <div class="key enter" data-key="ENTER">ENTRÉE</div>
                 </div>
             </div>
@@ -402,6 +434,9 @@
         </div>
     </div>
 
+    <!-- Canvas WebGL pour fond orange circulaire -->
+    <canvas id="glcanvas" style="position: fixed; top: 0; left: 0; z-index: -2; width: 100vw; height: 100vh;"></canvas>
+
     <script>
         // Système audio Stargate
         class StargateAudio {
@@ -411,7 +446,6 @@
             }
             
             initSounds() {
-                // Sons des chevrons (utilisant les sons originaux)
                 const path = 'https://manzdev.github.io/cursos-assets/css3/audio/';
                 
                 this.sounds.chevron = {
@@ -431,7 +465,6 @@
                     }
                 };
                 
-                // Autres sons Stargate
                 this.sounds.gateRoll = new Audio(path + 'roll.mp3');
                 this.sounds.gateSpin = new Audio(path + 'spin.mp3');
                 this.sounds.fail = new Audio(path + 'fail.mp3');
@@ -439,7 +472,6 @@
                 this.sounds.gateClose = new Audio(path + 'eh_usual_close.mp3');
                 this.sounds.wormHole = new Audio(path + 'wormhole.mp3');
                 
-                // Configuration des sons en boucle
                 this.sounds.gateSpin.loop = true;
                 this.sounds.wormHole.loop = true;
             }
@@ -460,8 +492,8 @@
             }
         }
 
-        // Interface Clavier Stargate
-        class StargateKeyboard {
+        // Interface DHD Stargate
+        class StargateDHD {
             constructor() {
                 this.sequence = [];
                 this.maxSequenceLength = 7;
@@ -469,10 +501,10 @@
                 this.sequenceDisplay = document.getElementById('sequenceDisplay');
                 this.initKeyboard();
                 this.initControls();
+                this.initWebGL();
             }
             
             initKeyboard() {
-                // Écouteurs pour les touches du clavier virtuel
                 document.querySelectorAll('.key').forEach(key => {
                     key.addEventListener('click', () => {
                         const keyValue = key.getAttribute('data-key');
@@ -480,32 +512,7 @@
                     });
                 });
                 
-                // Écouteur pour le clavier physique
-                document.addEventListener('keydown', (event) => {
-                    // Empêcher le comportement par défaut pour les touches que nous gérons
-                    if (event.key.length === 1 || 
-                        event.key === 'Enter' || 
-                        event.key === 'Backspace' || 
-                        event.key === ' ') {
-                        event.preventDefault();
-                        
-                        let keyValue = event.key.toUpperCase();
-                        if (event.key === 'Enter') keyValue = 'ENTER';
-                        if (event.key === 'Backspace') keyValue = 'DEL';
-                        if (event.key === ' ') keyValue = 'SPACE';
-                        
-                        this.handleKeyPress(keyValue);
-                        
-                        // Animation visuelle de la touche
-                        const keyElement = document.querySelector(`.key[data-key="${keyValue}"]`);
-                        if (keyElement) {
-                            keyElement.classList.add('active');
-                            setTimeout(() => {
-                                keyElement.classList.remove('active');
-                            }, 200);
-                        }
-                    }
-                });
+                // Pas de clavier physique pour les symboles, car pas de mapping direct
             }
             
             initControls() {
@@ -523,27 +530,20 @@
             }
             
             handleKeyPress(key) {
-                // Jouer le son du chevron
                 this.audioSystem.playChevronSound();
                 
-                // Traiter la touche en fonction de sa valeur
                 switch(key) {
                     case 'DEL':
                         if (this.sequence.length > 0) {
                             this.sequence.pop();
                         }
                         break;
-                    case 'SPACE':
-                        if (this.sequence.length < this.maxSequenceLength) {
-                            this.sequence.push(' ');
-                        }
-                        break;
                     case 'ENTER':
                         this.activateGate();
                         break;
                     default:
-                        if (this.sequence.length < this.maxSequenceLength && key.length === 1) {
-                            this.sequence.push(key);
+                        if (this.sequence.length < this.maxSequenceLength && !isNaN(parseInt(key))) {
+                            this.sequence.push(parseInt(key));
                         }
                         break;
                 }
@@ -552,13 +552,18 @@
             }
             
             updateDisplay() {
+                this.sequenceDisplay.innerHTML = '';
                 if (this.sequence.length === 0) {
                     this.sequenceDisplay.textContent = 'COMPOSEZ UNE SÉQUENCE...';
                     this.sequenceDisplay.style.color = '#00ffff';
                 } else {
-                    this.sequenceDisplay.textContent = this.sequence.join('');
+                    this.sequence.forEach(symbol => {
+                        const pad = ('00' + symbol).slice(-3);
+                        const img = document.createElement('img');
+                        img.src = `https://manzdev.github.io/cursos-assets/css3/svg/chevrons/${pad}.svg`;
+                        this.sequenceDisplay.appendChild(img);
+                    });
                     
-                    // Changer la couleur en fonction de la longueur de la séquence
                     if (this.sequence.length === this.maxSequenceLength) {
                         this.sequenceDisplay.style.color = '#00ff00';
                         this.sequenceDisplay.style.textShadow = '0 0 10px #00ff00';
@@ -576,28 +581,22 @@
             
             activateGate() {
                 if (this.sequence.length === this.maxSequenceLength) {
-                    // Séquence complète - activation de la porte
-                    this.sequenceDisplay.textContent = 'PORTE ACTIVÉE!';
+                    this.sequenceDisplay.innerHTML = 'PORTE ACTIVÉE!';
                     this.sequenceDisplay.style.color = '#00ff00';
                     this.sequenceDisplay.style.textShadow = '0 0 15px #00ff00';
                     
-                    // Jouer le son d'activation
                     this.audioSystem.playGateActivation();
                     
-                    // Réinitialiser après un délai
                     setTimeout(() => {
                         this.clearSequence();
                     }, 5000);
                 } else {
-                    // Séquence incomplète - échec
-                    this.sequenceDisplay.textContent = 'SÉQUENCE INCOMPLÈTE!';
+                    this.sequenceDisplay.innerHTML = 'SÉQUENCE INCOMPLÈTE!';
                     this.sequenceDisplay.style.color = '#ff0000';
                     this.sequenceDisplay.style.textShadow = '0 0 10px #ff0000';
                     
-                    // Jouer le son d'échec
                     this.audioSystem.playGateFail();
                     
-                    // Réinitialiser après un délai
                     setTimeout(() => {
                         this.updateDisplay();
                     }, 2000);
@@ -606,13 +605,11 @@
             
             generateRandomSequence() {
                 this.clearSequence();
-                const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
                 
                 for (let i = 0; i < this.maxSequenceLength; i++) {
-                    const randomIndex = Math.floor(Math.random() * symbols.length);
-                    this.sequence.push(symbols[randomIndex]);
+                    const randomSymbol = Math.floor(Math.random() * 39) + 1;
+                    this.sequence.push(randomSymbol);
                     
-                    // Jouer le son du chevron avec un délai pour un effet réaliste
                     setTimeout(() => {
                         this.audioSystem.playChevronSound();
                     }, i * 300);
@@ -620,12 +617,72 @@
                 
                 this.updateDisplay();
             }
+
+            initWebGL() {
+                const canvas = document.getElementById('glcanvas');
+                const gl = canvas.getContext('webgl');
+                if (!gl) {
+                    console.log('WebGL non supporté');
+                    return;
+                }
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const vsSource = `
+                    attribute vec2 aPosition;
+                    void main() {
+                        gl_Position = vec4(aPosition, 0.0, 1.0);
+                    }
+                `;
+
+                const fsSource = `
+                    void main() {
+                        gl_FragColor = vec4(1.0, 0.5, 0.0, 0.2); // Orange transparent
+                    }
+                `;
+
+                const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+                gl.shaderSource(vertexShader, vsSource);
+                gl.compileShader(vertexShader);
+
+                const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+                gl.shaderSource(fragmentShader, fsSource);
+                gl.compileShader(fragmentShader);
+
+                const program = gl.createProgram();
+                gl.attachShader(program, vertexShader);
+                gl.attachShader(program, fragmentShader);
+                gl.linkProgram(program);
+                gl.useProgram(program);
+
+                const segments = 100;
+                const vertices = new Float32Array((segments + 2) * 2);
+                vertices[0] = 0;
+                vertices[1] = 0;
+                for (let i = 0; i <= segments; i++) {
+                    const angle = (i / segments) * Math.PI * 2;
+                    vertices[2 + i * 2] = Math.cos(angle);
+                    vertices[3 + i * 2] = Math.sin(angle);
+                }
+
+                const buffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+                gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+                const position = gl.getAttribLocation(program, 'aPosition');
+                gl.enableVertexAttribArray(position);
+                gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+                gl.clearColor(0, 0, 0, 0);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.drawArrays(gl.TRIANGLE_FAN, 0, segments + 2);
+            }
         }
 
-        // Initialisation quand la page est chargée
         document.addEventListener('DOMContentLoaded', () => {
-            const stargateKeyboard = new StargateKeyboard();
-            console.log('Clavier Stargate initialisé');
+            const stargateDHD = new StargateDHD();
+            console.log('DHD Stargate initialisé');
         });
     </script>
 </body>
