@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stargate Ultimate</title>
+    <title>Clavier Stargate - Interface Chevrons</title>
     <style>
-        @font-face {
-            font-family: "Stargate";
-            src: local("Stargate"), url("https://manzdev.github.io/cursos-assets/css3/fonts/Stargate.ttf.woff") format("woff");
-        }
-        
         * {
             margin: 0;
             padding: 0;
@@ -17,399 +12,409 @@
         }
 
         body {
-            background: #000;
+            background: #0a0a1a;
             color: #fff;
             font-family: 'Courier New', monospace;
-            overflow: hidden;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(40, 40, 100, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(100, 40, 40, 0.3) 0%, transparent 50%);
+            overflow-x: hidden;
         }
 
-        /* STARGATE VISUEL - ANIMATION ORIGINALE */
-        .stargate-container {
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        }
+
+        .title h1 {
+            font-size: 3.5rem;
+            color: #00ffff;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .title p {
+            font-size: 1.2rem;
+            color: #88aaff;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .keyboard-container {
+            background: rgba(10, 15, 30, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 150, 255, 0.3);
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 30px;
+        }
+
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .keyboard-row {
+            display: contents;
+        }
+
+        .key {
+            background: linear-gradient(145deg, #1a1a3a, #0a0a2a);
+            border: 2px solid #3344aa;
+            border-radius: 8px;
+            color: #aaccff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .key:hover {
+            background: linear-gradient(145deg, #2a2a5a, #1a1a4a);
+            border-color: #4488ff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .key:active, .key.active {
+            background: linear-gradient(145deg, #3a3a7a, #2a2a6a);
+            border-color: #00ffff;
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .key:active::after, .key.active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            animation: ripple 0.5s ease-out;
+        }
+
+        .key.special {
+            background: linear-gradient(145deg, #2a1a3a, #1a0a2a);
+            border-color: #aa44aa;
+            color: #dd99ff;
+        }
+
+        .key.special:hover {
+            background: linear-gradient(145deg, #3a2a5a, #2a1a4a);
+            border-color: #cc66cc;
+        }
+
+        .key.space {
+            grid-column: span 4;
+            font-size: 1rem;
+        }
+
+        .key.enter {
+            grid-column: span 2;
+            background: linear-gradient(145deg, #1a3a1a, #0a2a0a);
+            border-color: #44aa44;
+            color: #99ff99;
+        }
+
+        .key.enter:hover {
+            background: linear-gradient(145deg, #2a5a2a, #1a4a1a);
+            border-color: #66cc66;
+        }
+
+        .stargate-display {
+            background: rgba(0, 10, 30, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid rgba(0, 150, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 100, 255, 0.2);
+        }
+
+        .sequence-display {
+            background: rgba(0, 20, 40, 0.8);
+            border: 2px solid #00aaff;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sequence-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(0, 150, 255, 0.1), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: linear-gradient(145deg, #2a2a5a, #1a1a4a);
+            border: 2px solid #4488ff;
+            border-radius: 8px;
+            color: #aaccff;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(145deg, #3a3a7a, #2a2a6a);
+            border-color: #00ffff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .control-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .instructions {
+            margin-top: 30px;
+            text-align: center;
+            color: #88aaff;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .stargate-glow {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 1000;
+            width: 100vmax;
+            height: 100vmax;
+            background: radial-gradient(circle, rgba(0, 100, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
         }
 
-        .title {
-            width: 600px;
-            margin: 0 auto 25px auto;
-            padding: 0 25px;
-            font-family: "Stargate";
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
         }
 
-        .title h2 {
-            font-size: 82px;
-            color: #fff;
-            margin: 25px auto 0 auto;
-            text-align: center;
-            text-shadow: 0 0 20px #00ffff;
-        }
-
-        .title h4 {
-            text-align: right;
-            margin: 0;
-            padding: 10px 75px 0 0;
-            border-top: 1px solid #ffa012;
-        }
-
-        .title h4 a {
-            color: #0ea8ef;
-            text-decoration: none;
-        }
-
-        .sg-border {
-            width: 675px;
-            height: 675px;
-            border: 14px solid #111;
-            border-radius: 50%;
-            margin: auto;
-            position: relative;
-        }
-
-        .arrow {
-            position: absolute;
-            z-index: 2;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 25px 25px 0 25px;
-            border-color: #5e2f12 transparent transparent transparent;
-            transition: all 1s linear;
-        }
-
-        .arrow.on {
-            border-color: orange transparent transparent transparent;
-            filter: drop-shadow(0 0 5px red);
-        }
-
-        .arrow.arrow1 {
-            left: 318px;
-            top: -25px;
-        }
-
-        .arrow.arrow2 {
-            left: 525px;
-            top: 80px;
-            transform: rotate(40deg);
-        }
-
-        .arrow.arrow3 {
-            left: 635px;
-            top: 300px;
-            transform: rotate(87deg);
-        }
-
-        .arrow.arrow4 {
-            left: 575px;
-            top: 515px;
-            transform: rotate(125deg);
-        }
-
-        .arrow.arrow5 {
-            left: 425px;
-            top: 630px;
-            transform: rotate(160deg);
-        }
-
-        .arrow.arrow6 {
-            left: 215px;
-            top: 635px;
-            transform: rotate(200deg);
-        }
-
-        .arrow.arrow7 {
-            left: 50px;
-            top: 515px;
-            transform: rotate(235deg);
-        }
-
-        .arrow.arrow8 {
-            left: -12px;
-            top: 315px;
-            transform: rotate(272deg);
-        }
-
-        .arrow.arrow9 {
-            left: 70px;
-            top: 105px;
-            transform: rotate(310deg);
-        }
-
-        #stargate {
-            background: radial-gradient(transparent 53%, #222 53%);
-            width: 675px;
-            height: 675px;
-            margin: auto;
-            border-radius: 50%;
-            box-shadow: 3px 3px 5px #000 inset, -4px -4px 6px #000 inset;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: move 20s cubic-bezier(0.44, 0.35, 0.78, 0.73) paused infinite;
-        }
-
-        #stargate.on {
-            animation-play-state: running;
-        }
-
-        #stargate img.chevron {
-            filter: invert(1);
-            width: 42px;
-            position: absolute;
-            top: 46%;
-            left: 47%;
-        }
-
-        /* Positionnement des chevrons SVG */
-        #stargate .chevron:nth-child(1) { transform: translate(0, -300px); }
-        #stargate .chevron:nth-child(2) { transform: translate(50px, -290px); }
-        #stargate .chevron:nth-child(3) { transform: translate(100px, -275px); }
-        #stargate .chevron:nth-child(4) { transform: translate(145px, -250px); }
-        #stargate .chevron:nth-child(5) { transform: translate(185px, -225px); }
-        #stargate .chevron:nth-child(6) { transform: translate(220px, -185px); }
-        #stargate .chevron:nth-child(7) { transform: translate(250px, -140px); }
-        #stargate .chevron:nth-child(8) { transform: translate(275px, -90px); }
-        #stargate .chevron:nth-child(9) { transform: translate(285px, -40px); }
-        #stargate .chevron:nth-child(10) { transform: translate(290px, 0); }
-        #stargate .chevron:nth-child(11) { transform: translate(288px, 50px); }
-        #stargate .chevron:nth-child(12) { transform: translate(275px, 95px); }
-        #stargate .chevron:nth-child(13) { transform: translate(253px, 135px); }
-        #stargate .chevron:nth-child(14) { transform: translate(230px, 172px); }
-        #stargate .chevron:nth-child(15) { transform: translate(197px, 207px); }
-        #stargate .chevron:nth-child(16) { transform: translate(153px, 243px); }
-        #stargate .chevron:nth-child(17) { transform: translate(111px, 269px); }
-        #stargate .chevron:nth-child(18) { transform: translate(70px, 286px); }
-        #stargate .chevron:nth-child(19) { transform: translate(21px, 293px); }
-        #stargate .chevron:nth-child(20) { transform: translate(-25px, 295px); }
-        #stargate .chevron:nth-child(21) { transform: translate(-66px, 290px); }
-        #stargate .chevron:nth-child(22) { transform: translate(-109px, 277px); }
-        #stargate .chevron:nth-child(23) { transform: translate(-144px, 258px); }
-        #stargate .chevron:nth-child(24) { transform: translate(-185px, 235px); }
-        #stargate .chevron:nth-child(25) { transform: translate(-221px, 202px); }
-        #stargate .chevron:nth-child(26) { transform: translate(-249px, 170px); }
-        #stargate .chevron:nth-child(27) { transform: translate(-272px, 135px); }
-        #stargate .chevron:nth-child(28) { transform: translate(-282px, 100px); }
-        #stargate .chevron:nth-child(29) { transform: translate(-295px, 69px); }
-        #stargate .chevron:nth-child(30) { transform: translate(-300px, 32px); }
-        #stargate .chevron:nth-child(31) { transform: translate(-300px, -17px); }
-        #stargate .chevron:nth-child(32) { transform: translate(-293px, -61px); }
-        #stargate .chevron:nth-child(33) { transform: translate(-282px, -103px); }
-        #stargate .chevron:nth-child(34) { transform: translate(-263px, -138px); }
-        #stargate .chevron:nth-child(35) { transform: translate(-240px, -171px); }
-        #stargate .chevron:nth-child(36) { transform: translate(-205px, -211px); }
-        #stargate .chevron:nth-child(37) { transform: translate(-163px, -248px); }
-        #stargate .chevron:nth-child(38) { transform: translate(-109px, -275px); }
-        #stargate .chevron:nth-child(39) { transform: translate(-60px, -287px); }
-
-        .wormhole {
-            position: relative;
-            background-color: transparent;
-            box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.5);
-            border: #000 1px solid;
-            width: 510px;
-            height: 510px;
-            border-radius: 50%;
-            transition: all 1s ease;
-        }
-
-        .wormhole.on {
-            background-color: #22a;
-            box-shadow: 15px 15px 25px #11b inset, -15px -15px 45px #11a inset, 0 0 15px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* ANIMATIONS */
-        @keyframes move {
-            0% { transform: rotate(0); }
-            100% { transform: rotate(360deg); }
+        @keyframes scan {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 200, 255, 0.8);
+            }
         }
 
-        @keyframes fadeout {
-            0% { opacity: 1; z-index: 4; }
-            100% { opacity: 0; z-index: -1; }
+        /* Animation pour les touches spéciales */
+        .key.space:active, .key.enter:active {
+            animation: pulse 0.3s ease;
         }
 
-        /* INTERFACE MODERNE */
-        .controls {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2000;
-            display: flex;
-            gap: 15px;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .keyboard {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            
+            .key {
+                height: 60px;
+                font-size: 1.2rem;
+            }
+            
+            .title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .sequence-display {
+                font-size: 1.5rem;
+            }
         }
 
-        .control-btn {
-            background: rgba(0, 153, 255, 0.3);
-            color: #00ffff;
-            border: 2px solid #00ffff;
-            padding: 15px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            font-size: 16px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(0, 153, 255, 0.5);
-        }
-
-        .control-btn:hover {
-            background: rgba(0, 153, 255, 0.6);
-            box-shadow: 0 0 25px rgba(0, 153, 255, 0.8);
-        }
-
-        /* MESSAGES CONTEXTUELS */
-        .message {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: #00ffff;
-            padding: 20px 40px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 18px;
-            text-align: center;
-            z-index: 3000;
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 30px rgba(0, 153, 255, 0.7);
-            animation: pulse 2s infinite;
-            max-width: 500px;
-        }
-
-        .hidden {
-            display: none;
+        @media (max-width: 480px) {
+            .keyboard {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .key {
+                height: 50px;
+                font-size: 1rem;
+            }
+            
+            .title h1 {
+                font-size: 2rem;
+            }
+            
+            .sequence-display {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- STARGATE ORIGINAL -->
-    <div class="stargate-container">
+    <div class="stargate-glow"></div>
+    
+    <div class="container">
         <div class="title">
-            <h2>STARGATE ULTIMATE</h2>
-            <h4>BY STARGATE SYSTEM</h4>
+            <h1>CLAVIER STARGATE</h1>
+            <p>Interface de composition avec sons authentiques des chevrons</p>
         </div>
-        <div class="sg-border">
-            <!-- Flèches/Chevrons -->
-            <div class="arrow arrow1"></div>
-            <div class="arrow arrow2"></div>
-            <div class="arrow arrow3"></div>
-            <div class="arrow arrow4"></div>
-            <div class="arrow arrow5"></div>
-            <div class="arrow arrow6"></div>
-            <div class="arrow arrow7"></div>
-            <div class="arrow arrow8"></div>
-            <div class="arrow arrow9"></div>
-            
-            <!-- Porte Stargate -->
-            <div id="stargate">
-                <div class="wormhole">
-                    <!-- Chevrons SVG -->
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/001.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/002.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/003.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/004.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/005.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/006.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/007.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/008.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/009.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/010.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/011.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/012.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/013.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/014.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/015.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/016.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/017.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/018.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/019.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/020.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/021.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/022.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/023.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/024.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/025.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/026.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/027.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/028.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/029.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/030.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/031.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/032.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/033.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/034.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/035.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/036.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/037.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/038.svg"/>
-                    <img class="chevron" src="https://manzdev.github.io/cursos-assets/css3/svg/chevrons/039.svg"/>
+        
+        <div class="keyboard-container">
+            <div class="keyboard">
+                <!-- Première rangée -->
+                <div class="keyboard-row">
+                    <div class="key" data-key="1">1</div>
+                    <div class="key" data-key="2">2</div>
+                    <div class="key" data-key="3">3</div>
+                    <div class="key" data-key="4">4</div>
+                    <div class="key" data-key="5">5</div>
+                    <div class="key" data-key="6">6</div>
+                    <div class="key" data-key="7">7</div>
+                    <div class="key" data-key="8">8</div>
+                    <div class="key" data-key="9">9</div>
+                    <div class="key" data-key="0">0</div>
+                </div>
+                
+                <!-- Deuxième rangée -->
+                <div class="keyboard-row">
+                    <div class="key" data-key="Q">Q</div>
+                    <div class="key" data-key="W">W</div>
+                    <div class="key" data-key="E">E</div>
+                    <div class="key" data-key="R">R</div>
+                    <div class="key" data-key="T">T</div>
+                    <div class="key" data-key="Y">Y</div>
+                    <div class="key" data-key="U">U</div>
+                    <div class="key" data-key="I">I</div>
+                    <div class="key" data-key="O">O</div>
+                    <div class="key" data-key="P">P</div>
+                </div>
+                
+                <!-- Troisième rangée -->
+                <div class="keyboard-row">
+                    <div class="key" data-key="A">A</div>
+                    <div class="key" data-key="S">S</div>
+                    <div class="key" data-key="D">D</div>
+                    <div class="key" data-key="F">F</div>
+                    <div class="key" data-key="G">G</div>
+                    <div class="key" data-key="H">H</div>
+                    <div class="key" data-key="J">J</div>
+                    <div class="key" data-key="K">K</div>
+                    <div class="key" data-key="L">L</div>
+                    <div class="key special" data-key="DEL">DEL</div>
+                </div>
+                
+                <!-- Quatrième rangée -->
+                <div class="keyboard-row">
+                    <div class="key" data-key="Z">Z</div>
+                    <div class="key" data-key="X">X</div>
+                    <div class="key" data-key="C">C</div>
+                    <div class="key" data-key="V">V</div>
+                    <div class="key" data-key="B">B</div>
+                    <div class="key" data-key="N">N</div>
+                    <div class="key" data-key="M">M</div>
+                    <div class="key space" data-key="SPACE">ESPACE</div>
+                    <div class="key enter" data-key="ENTER">ENTRÉE</div>
                 </div>
             </div>
         </div>
+        
+        <div class="stargate-display">
+            <div class="sequence-display" id="sequenceDisplay">
+                COMPOSEZ UNE SÉQUENCE...
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="clearBtn">EFFACER</button>
+                <button class="control-btn" id="activateBtn">ACTIVER LA PORTE</button>
+                <button class="control-btn" id="randomBtn">SÉQUENCE ALÉATOIRE</button>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <p>Cliquez sur les touches ou utilisez votre clavier physique. Chaque touche déclenche le son authentique d'un chevron Stargate.</p>
+            <p>Composez une séquence de 7 symboles pour activer la porte des étoiles.</p>
+        </div>
     </div>
-
-    <!-- CONTROLES -->
-    <div class="controls">
-        <button class="control-btn" id="open-interface">🎮 COMPOSER ADRESSE</button>
-        <button class="control-btn" id="activate-gate">🌀 ACTIVER PORTE</button>
-        <button class="control-btn" id="reset-gate">🔄 RÉINITIALISER</button>
-    </div>
-
-    <!-- MESSAGE CONTEXTUEL -->
-    <div class="message hidden" id="status-message"></div>
 
     <script>
-        // ========================================
-        // SYSTÈME STARGATE HYBRIDE
-        // ========================================
-
-        class StargateSystem {
+        // Système audio Stargate
+        class StargateAudio {
             constructor() {
-                this.isActive = false;
-                this.sequence = [];
-                this.destinations = {
-                    'namek': { name: 'La Planète Namek', color: '#2d7a54' },
-                    'neptune': { name: 'La Planète Neptune', color: '#2563eb' },
-                    'mars': { name: 'La Planète Mars', color: '#c1440e' },
-                    'void': { name: 'La Planète Void', color: '#2d004d' },
-                    'meta': { name: 'La Métropole Principale', color: '#ff6600' },
-                    'galerie': { name: 'La Galerie Spatiale', color: '#ff6600' },
-                    'fight': { name: 'La Zone de Combat', color: '#ff6600' },
-                    'orbite': { name: "L'Orbite de Jupiter", color: '#ff6600' },
-                    'desert': { name: 'Le Monde Désert Orange', color: '#ff6600' },
-                    'city': { name: 'Tokyo Cyberpunk', color: '#00ffff' },
-                    'nuit': { name: 'Monde Nuit Futuriste', color: '#4fc3f7' },
-                    'vert': { name: 'Monde Vert Inversé', color: '#90ee90' }
-                };
-
-                // Sons
                 this.sounds = {};
                 this.initSounds();
-                
-                // Éléments DOM
-                this.stargate = document.getElementById('stargate');
-                this.wormhole = document.querySelector('.wormhole');
-                this.arrows = document.querySelectorAll('.arrow');
-                this.statusMessage = document.getElementById('status-message');
-                
-                console.log('✅ Stargate System initialisé');
             }
-
+            
             initSounds() {
+                // Sons des chevrons (utilisant les sons originaux)
                 const path = 'https://manzdev.github.io/cursos-assets/css3/audio/';
                 
-                // Sons des chevrons
-                this.sounds.chevronClosed = {
+                this.sounds.chevron = {
                     audio: [
                         new Audio(path + 'chev_usual_1.mp3'),
                         new Audio(path + 'chev_usual_2.mp3'),
@@ -419,349 +424,209 @@
                         new Audio(path + 'chev_usual_6.mp3'),
                         new Audio(path + 'chev_usual_7.mp3')
                     ],
-                    play: function(n = -1) {
-                        if (n === -1) n = Math.floor(Math.random() * this.audio.length);
-                        this.audio[n].currentTime = 0;
-                        this.audio[n].play();
+                    play: function() {
+                        const randomIndex = Math.floor(Math.random() * this.audio.length);
+                        this.audio[randomIndex].currentTime = 0;
+                        this.audio[randomIndex].play().catch(e => console.log("Audio play prevented:", e));
                     }
                 };
-
-                // Sons de la porte
+                
+                // Autres sons Stargate
                 this.sounds.gateRoll = new Audio(path + 'roll.mp3');
                 this.sounds.gateSpin = new Audio(path + 'spin.mp3');
                 this.sounds.fail = new Audio(path + 'fail.mp3');
-                this.sounds.gateClose = new Audio(path + 'eh_usual_close.mp3');
                 this.sounds.gateOpen = new Audio(path + 'eh_usual_open.mp3');
+                this.sounds.gateClose = new Audio(path + 'eh_usual_close.mp3');
                 this.sounds.wormHole = new Audio(path + 'wormhole.mp3');
-
+                
                 // Configuration des sons en boucle
                 this.sounds.gateSpin.loop = true;
                 this.sounds.wormHole.loop = true;
             }
-
-            activate(sequence) {
-                this.sequence = sequence;
-                const sequenceStr = sequence.join('');
-                const destination = this.destinations[sequenceStr];
-                
-                if (!destination) {
-                    this.showMessage(`❌ SÉQUENCE INVALIDE: ${sequenceStr.toUpperCase()}`, '#ff0000');
-                    setTimeout(() => this.deactivate(), 3000);
-                    return;
-                }
-
-                this.isActive = true;
-                this.showMessage(`🌀 ACTIVATION: ${destination.name}`, '#00ffff');
-                
-                // Démarrer l'animation
-                this.startActivationSequence(destination);
+            
+            playChevronSound() {
+                this.sounds.chevron.play();
             }
-
-            startActivationSequence(destination) {
-                // Son de rotation
-                this.sounds.gateRoll.volume = 0.5;
-                this.sounds.gateRoll.play();
-                
-                // Animation de rotation
-                this.stargate.classList.add('on');
-
-                // Activation progressive des chevrons
-                let chevronCount = 0;
-                const maxChevrons = 9;
-                
-                const activateNextChevron = () => {
-                    if (chevronCount < maxChevrons) {
-                        // Son du chevron
-                        this.sounds.chevronClosed.play();
-                        
-                        // Activation visuelle
-                        this.arrows[chevronCount].classList.add('on');
-                        
-                        chevronCount++;
-                        setTimeout(activateNextChevron, 800);
-                    } else {
-                        // Tous les chevrons activés
-                        this.completeActivation(destination);
-                    }
-                };
-
-                activateNextChevron();
-            }
-
-            completeActivation(destination) {
-                // Arrêter la rotation
-                setTimeout(() => {
-                    this.stargate.classList.remove('on');
-                    this.sounds.gateRoll.pause();
-                    
-                    // Activer le vortex
-                    this.activateWormhole(destination);
-                }, 2000);
-            }
-
-            activateWormhole(destination) {
-                // Son d'ouverture
+            
+            playGateActivation() {
                 this.sounds.gateOpen.play();
-                
-                // Activation visuelle du vortex
-                this.wormhole.classList.add('on');
-                
-                // Son du vortex
                 setTimeout(() => {
                     this.sounds.wormHole.play();
-                    this.showMessage(`🌀 PORTAL ACTIF: ${destination.name} - APPROCHEZ-VOUS`, '#00ff00');
                 }, 1000);
-
-                // Fermeture automatique après 20s
-                setTimeout(() => {
-                    if (this.isActive) {
-                        this.deactivate();
-                    }
-                }, 20000);
             }
-
-            deactivate() {
-                this.isActive = false;
-                
-                // Son de fermeture
-                this.sounds.gateClose.play();
-                this.sounds.wormHole.pause();
-                
-                // Désactivation visuelle
-                this.wormhole.classList.remove('on');
-                this.arrows.forEach(arrow => arrow.classList.remove('on'));
-                this.stargate.classList.remove('on');
-                
-                this.showMessage('🌀 PORTE DÉSACTIVÉE', '#ff6600');
-                
-                // Cacher le message après 3s
-                setTimeout(() => {
-                    this.hideMessage();
-                }, 3000);
-            }
-
-            showMessage(text, color = '#00ffff') {
-                this.statusMessage.textContent = text;
-                this.statusMessage.style.color = color;
-                this.statusMessage.style.borderColor = color;
-                this.statusMessage.classList.remove('hidden');
-            }
-
-            hideMessage() {
-                this.statusMessage.classList.add('hidden');
-            }
-
-            reset() {
-                this.deactivate();
-                this.sequence = [];
-                this.hideMessage();
+            
+            playGateFail() {
+                this.sounds.fail.play();
             }
         }
 
-        // ========================================
-        // INTERFACE DE COMPOSITION
-        // ========================================
-
-        class ChevronInterface {
-            constructor(stargateSystem) {
-                this.stargateSystem = stargateSystem;
+        // Interface Clavier Stargate
+        class StargateKeyboard {
+            constructor() {
                 this.sequence = [];
-                this.maxSymbols = 7;
-                this.isOpen = false;
-                this.modalElement = null;
-                
-                this.init();
+                this.maxSequenceLength = 7;
+                this.audioSystem = new StargateAudio();
+                this.sequenceDisplay = document.getElementById('sequenceDisplay');
+                this.initKeyboard();
+                this.initControls();
             }
-
-            init() {
-                document.getElementById('open-interface').addEventListener('click', () => this.open());
-                document.getElementById('activate-gate').addEventListener('click', () => this.quickActivate());
-                document.getElementById('reset-gate').addEventListener('click', () => this.stargateSystem.reset());
-            }
-
-            open() {
-                if (this.isOpen) {
-                    this.close();
-                    return;
-                }
-
-                this.isOpen = true;
-                this.createModal();
-            }
-
-            createModal() {
-                this.modalElement = document.createElement('div');
-                this.modalElement.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background: rgba(0, 0, 0, 0.95);
-                    color: #00ffff;
-                    padding: 30px;
-                    border-radius: 15px;
-                    font-family: 'Courier New', monospace;
-                    z-index: 9999;
-                    border: 3px solid #00ffff;
-                    box-shadow: 0 0 40px rgba(0, 153, 255, 0.8);
-                    min-width: 500px;
-                    max-width: 90vw;
-                `;
-
-                this.modalElement.innerHTML = `
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <h2 style="color: #ffff00; margin: 0 0 10px 0;">🌀 COMPOSITION STARGATE</h2>
-                        <div style="font-size: 14px; color: #aaaaaa;">Sélectionnez jusqu'à ${this.maxSymbols} symboles</div>
-                    </div>
-                    
-                    <div id="sequence-display" style="background: rgba(0, 255, 255, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 20px; min-height: 60px; text-align: center; font-size: 24px; color: #00ff00; border: 2px solid #00ffff;">
-                        <div style="font-size: 12px; color: #00ffff; margin-bottom: 5px;">SÉQUENCE COMPOSÉE</div>
-                        <div id="sequence-text">---</div>
-                    </div>
-                    
-                    <div id="symbols-grid" style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-bottom: 20px;">
-                        ${this.generateSymbols()}
-                    </div>
-                    
-                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                        <button id="clear-btn" style="background: #ff6600; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px;">
-                            🗑️ EFFACER
-                        </button>
-                        <button id="dial-btn" style="background: #00ff00; color: black; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px;">
-                            ✅ COMPOSER
-                        </button>
-                        <button id="close-btn" style="background: #ff0000; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px;">
-                            ✕ FERMER
-                        </button>
-                    </div>
-                    
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; font-size: 11px;">
-                        <div style="color: #ffff00; font-weight: bold; margin-bottom: 8px;">📍 DESTINATIONS DISPONIBLES</div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; color: #aaaaaa;">
-                            <div><span style="color: #2d7a54;">namek</span> - Planète Namek</div>
-                            <div><span style="color: #2563eb;">neptune</span> - Planète Neptune</div>
-                            <div><span style="color: #c1440e;">mars</span> - Planète Mars</div>
-                            <div><span style="color: #2d004d;">void</span> - Planète Void</div>
-                            <div><span style="color: #ff6600;">meta</span> - Métropole</div>
-                            <div><span style="color: #ff6600;">fight</span> - Combat</div>
-                            <div><span style="color: #ff6600;">orbite</span> - Jupiter</div>
-                            <div><span style="color: #ff6600;">desert</span> - Désert Orange</div>
-                            <div><span style="color: #00ffff;">city</span> - Tokyo Cyberpunk</div>
-                            <div><span style="color: #4fc3f7;">nuit</span> - Monde Nuit</div>
-                            <div><span style="color: #90ee90;">vert</span> - Monde Vert</div>
-                        </div>
-                    </div>
-                `;
-
-                document.body.appendChild(this.modalElement);
-                this.addEventListeners();
-            }
-
-            generateSymbols() {
-                let html = '';
-                const symbols = 'abcdefghijklmnopqrstuvwxyz'.split('');
-                
-                symbols.forEach(symbol => {
-                    html += `
-                        <button class="symbol-btn" data-symbol="${symbol}" style="
-                            background: rgba(0, 153, 255, 0.3);
-                            color: #00ffff;
-                            border: 2px solid #00ffff;
-                            padding: 15px;
-                            border-radius: 8px;
-                            cursor: pointer;
-                            font-weight: bold;
-                            font-size: 16px;
-                            transition: all 0.2s;
-                        ">${symbol.toUpperCase()}</button>
-                    `;
-                });
-                
-                return html;
-            }
-
-            addEventListeners() {
-                // Symboles
-                document.querySelectorAll('.symbol-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const symbol = btn.getAttribute('data-symbol');
-                        this.addSymbol(symbol);
+            
+            initKeyboard() {
+                // Écouteurs pour les touches du clavier virtuel
+                document.querySelectorAll('.key').forEach(key => {
+                    key.addEventListener('click', () => {
+                        const keyValue = key.getAttribute('data-key');
+                        this.handleKeyPress(keyValue);
                     });
                 });
-
-                // Boutons d'action
-                document.getElementById('clear-btn').addEventListener('click', () => this.clearSequence());
-                document.getElementById('dial-btn').addEventListener('click', () => this.dial());
-                document.getElementById('close-btn').addEventListener('click', () => this.close());
-
-                // Fermeture avec Escape
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') this.close();
+                
+                // Écouteur pour le clavier physique
+                document.addEventListener('keydown', (event) => {
+                    // Empêcher le comportement par défaut pour les touches que nous gérons
+                    if (event.key.length === 1 || 
+                        event.key === 'Enter' || 
+                        event.key === 'Backspace' || 
+                        event.key === ' ') {
+                        event.preventDefault();
+                        
+                        let keyValue = event.key.toUpperCase();
+                        if (event.key === 'Enter') keyValue = 'ENTER';
+                        if (event.key === 'Backspace') keyValue = 'DEL';
+                        if (event.key === ' ') keyValue = 'SPACE';
+                        
+                        this.handleKeyPress(keyValue);
+                        
+                        // Animation visuelle de la touche
+                        const keyElement = document.querySelector(`.key[data-key="${keyValue}"]`);
+                        if (keyElement) {
+                            keyElement.classList.add('active');
+                            setTimeout(() => {
+                                keyElement.classList.remove('active');
+                            }, 200);
+                        }
+                    }
                 });
             }
-
-            addSymbol(symbol) {
-                if (this.sequence.length < this.maxSymbols) {
-                    this.sequence.push(symbol);
-                    this.updateDisplay();
+            
+            initControls() {
+                document.getElementById('clearBtn').addEventListener('click', () => {
+                    this.clearSequence();
+                });
+                
+                document.getElementById('activateBtn').addEventListener('click', () => {
+                    this.activateGate();
+                });
+                
+                document.getElementById('randomBtn').addEventListener('click', () => {
+                    this.generateRandomSequence();
+                });
+            }
+            
+            handleKeyPress(key) {
+                // Jouer le son du chevron
+                this.audioSystem.playChevronSound();
+                
+                // Traiter la touche en fonction de sa valeur
+                switch(key) {
+                    case 'DEL':
+                        if (this.sequence.length > 0) {
+                            this.sequence.pop();
+                        }
+                        break;
+                    case 'SPACE':
+                        if (this.sequence.length < this.maxSequenceLength) {
+                            this.sequence.push(' ');
+                        }
+                        break;
+                    case 'ENTER':
+                        this.activateGate();
+                        break;
+                    default:
+                        if (this.sequence.length < this.maxSequenceLength && key.length === 1) {
+                            this.sequence.push(key);
+                        }
+                        break;
+                }
+                
+                this.updateDisplay();
+            }
+            
+            updateDisplay() {
+                if (this.sequence.length === 0) {
+                    this.sequenceDisplay.textContent = 'COMPOSEZ UNE SÉQUENCE...';
+                    this.sequenceDisplay.style.color = '#00ffff';
+                } else {
+                    this.sequenceDisplay.textContent = this.sequence.join('');
+                    
+                    // Changer la couleur en fonction de la longueur de la séquence
+                    if (this.sequence.length === this.maxSequenceLength) {
+                        this.sequenceDisplay.style.color = '#00ff00';
+                        this.sequenceDisplay.style.textShadow = '0 0 10px #00ff00';
+                    } else {
+                        this.sequenceDisplay.style.color = '#00ffff';
+                        this.sequenceDisplay.style.textShadow = '0 0 10px #00ffff';
+                    }
                 }
             }
-
+            
             clearSequence() {
                 this.sequence = [];
                 this.updateDisplay();
             }
-
-            updateDisplay() {
-                const display = document.getElementById('sequence-text');
-                if (display) {
-                    display.textContent = this.sequence.length > 0 ? this.sequence.join('').toUpperCase() : '---';
+            
+            activateGate() {
+                if (this.sequence.length === this.maxSequenceLength) {
+                    // Séquence complète - activation de la porte
+                    this.sequenceDisplay.textContent = 'PORTE ACTIVÉE!';
+                    this.sequenceDisplay.style.color = '#00ff00';
+                    this.sequenceDisplay.style.textShadow = '0 0 15px #00ff00';
+                    
+                    // Jouer le son d'activation
+                    this.audioSystem.playGateActivation();
+                    
+                    // Réinitialiser après un délai
+                    setTimeout(() => {
+                        this.clearSequence();
+                    }, 5000);
+                } else {
+                    // Séquence incomplète - échec
+                    this.sequenceDisplay.textContent = 'SÉQUENCE INCOMPLÈTE!';
+                    this.sequenceDisplay.style.color = '#ff0000';
+                    this.sequenceDisplay.style.textShadow = '0 0 10px #ff0000';
+                    
+                    // Jouer le son d'échec
+                    this.audioSystem.playGateFail();
+                    
+                    // Réinitialiser après un délai
+                    setTimeout(() => {
+                        this.updateDisplay();
+                    }, 2000);
                 }
             }
-
-            dial() {
-                if (this.sequence.length === 0) {
-                    alert('Veuillez composer une séquence d\'adresse');
-                    return;
+            
+            generateRandomSequence() {
+                this.clearSequence();
+                const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                
+                for (let i = 0; i < this.maxSequenceLength; i++) {
+                    const randomIndex = Math.floor(Math.random() * symbols.length);
+                    this.sequence.push(symbols[randomIndex]);
+                    
+                    // Jouer le son du chevron avec un délai pour un effet réaliste
+                    setTimeout(() => {
+                        this.audioSystem.playChevronSound();
+                    }, i * 300);
                 }
-
-                this.stargateSystem.activate(this.sequence);
-                this.close();
-            }
-
-            close() {
-                if (this.modalElement) {
-                    document.body.removeChild(this.modalElement);
-                    this.modalElement = null;
-                }
-                this.isOpen = false;
-            }
-
-            quickActivate() {
-                // Activation rapide avec une séquence aléatoire
-                const sequences = Object.keys(this.stargateSystem.destinations);
-                const randomSeq = sequences[Math.floor(Math.random() * sequences.length)];
-                this.stargateSystem.activate(randomSeq.split(''));
+                
+                this.updateDisplay();
             }
         }
 
-        // ========================================
-        // INITIALISATION
-        // ========================================
-
-        // Attendre que le DOM soit chargé
+        // Initialisation quand la page est chargée
         document.addEventListener('DOMContentLoaded', () => {
-            const stargateSystem = new StargateSystem();
-            const chevronInterface = new ChevronInterface(stargateSystem);
-            
-            console.log('🚀 Stargate Ultimate prêt !');
-            
-            // Message de bienvenue
-            setTimeout(() => {
-                stargateSystem.showMessage('🌀 STARGATE ULTIMATE - SYSTÈME PRÊT', '#00ffff');
-            }, 1000);
+            const stargateKeyboard = new StargateKeyboard();
+            console.log('Clavier Stargate initialisé');
         });
-
     </script>
 </body>
 </html>
